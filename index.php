@@ -42,6 +42,7 @@ $err = curl_error($curl);
 
 curl_close($curl);
 
+
 // taken fromn stack
 //print_r(json_decode($response, true));
 
@@ -50,7 +51,10 @@ $decoded_json = json_decode($response, true);
 //echo $decoded_json['data']['date'];
 $conf = $decoded_json['data']['confirmed'];
 $active = $decoded_json['data']['active'];
+$active_diff = $decoded_json['data']['active_diff'];
+
 $deaths = $decoded_json['data']['deaths'];
+$deaths_diff = $decoded_json['data']['deaths_diff'];
 
 echo '<div class="row">';
   echo '<div class="col-sm-4 p-4 text-center">';
@@ -64,12 +68,18 @@ echo '</h3>';
 echo '<H3>Current Active Cases: <br>';
     echo ' <i class="fas fa-male" style="color:orange;"></i> ';
 echo $active;
+echo '<br>';
+echo $active_diff;
+echo ' new';
 echo '</h3>';
 
 // deaths cases red
 echo '<H3>Total Deaths: <br>';
     echo ' <i class="fas fa-male" style="color:red;"></i> ';
 echo $deaths; 
+echo '<br>';
+echo $deaths_diff;
+echo ' new';
 echo '</h3>';
 echo '<h5> <i class="fas fa-male" style="color:black;"></i> is 1,000,000 cases</h5>';
   echo '</div>'; // col sm 4
@@ -111,8 +121,9 @@ echo '</div>';
 
 <div class="footer text-center">
 
-        Data is from the <a href="https://rapidapi.com/axisbits-axisbits-default/api/covid-19-statistics/">COVID-19 Statistics</a> API by <a href="https://rapidapi.com/organization/axisbits">AxisBits</a>.
-
+      <p>  Data is from the <a href="https://rapidapi.com/axisbits-axisbits-default/api/covid-19-statistics/">COVID-19 Statistics</a> API by <a href="https://rapidapi.com/organization/axisbits">AxisBits</a>.
+</p>
+<p><a href="https://github.com/sandorfalot/covidvisualize">My code on Github.</a></p>
 </div>
 </body>
 </html>
